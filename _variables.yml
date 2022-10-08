@@ -1,0 +1,22 @@
+# project-level variable
+# qmd: {{< var >}}
+# R script:
+#library(yaml)
+#config = yaml.load_file("config.yml")
+#_variables$mysql$user
+
+version: 1.0
+
+email:
+  info: info@example.com
+  support: support@example.com
+
+mysql:
+  user: root
+  password: apple
+  host: 127.0.0.1
+  port: 3306
+
+engine:
+  jupyter: "[Jupyter](https://jupyter.org)"
+  knitr: "[Knitr](<https://yihui.name/knitr>)"

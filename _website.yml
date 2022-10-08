@@ -1,0 +1,54 @@
+website:
+  title: "j-quarto-template"
+  page-footer:
+    center:
+      - text: "2022~"
+        #href: about.qmd
+      - text: "."
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "How-To"
+        file: index.qmd
+      - text: "Link"
+        file: index.qmd
+      - text: "Reference"
+        file: reference.qmd
+
+  sidebar:
+    - title: "How-To"
+      style: "docked"
+      background: light
+      contents:
+        - index.qmd
+        # navigation items
+
+    - title: "Link"
+      contents:
+        - index.qmd
+        # navigation items
+
+    - title: "Reference"
+      contents:
+        - index.qmd
+        # navigation items
+
+
+
+  # sidebar:
+  #   style: "docked" #"floating"
+  #   search: true
+  #   contents:
+  #     - section: "Preface"
+  #       contents:
+  #         - index.qmd
+  #     - section: "sklearn"
+  #       contents:
+  #         - sklearn-knn.qmd
+  #     - section: "Reference"
+  #       contents:
+  #         - references.qmd
+

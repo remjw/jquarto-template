@@ -1,0 +1,25 @@
+book:
+  title: "&#x2694;&#xFE0F; j-miscellany"
+  author: "Jie"
+  date: "10/10/2022"
+  cover-image: cover.png
+  output-dir: _book
+  chapters:
+    - index.qmd
+    - part: css.qmd
+      chapters:
+        - css_1.qmd
+        - css_2.qmd
+#    - sklearn-knn.qmd
+    - references.qmd
+
+#  pdf:
+#    documentclass: scrreprt
+#    toc: true
+#    number-sections: true
+#    colorlinks: true
+    # default arrow highlight-style: github
+
+
+
+

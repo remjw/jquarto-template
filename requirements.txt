@@ -1,0 +1,10 @@
+graphviz
+pandas
+matplotlib
+numpy
+scikit-learn
+scipy
+seaborn
+sqlalchemy
+pymysql
+mysql-connector-python

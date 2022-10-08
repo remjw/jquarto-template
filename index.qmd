@@ -1,0 +1,255 @@
+<!--source .venv/bin/activate-->
+<!--source .venv/bin/activate-->
+
+```{r, include=FALSE, cache=F}
+knitr::read_chunk('chunk_setup.R')
+```
+
+```{r, setup, echo=FALSE,include=F}
+```
+
+<!--connect dvisvgm to Ghostscript for tikz
+find gs, run: tools:find_gs_cmd()
+-->
+```{r point-to-ghostscript, include=FALSE}
+Sys.setenv(LIBGS = "/usr/local/bin/gs")
+```
+
+<!--Conditional tikz output types; use PDF if this is LaTeX, otherwise use SVG with embedded fonts -->
+```{r tikzsetup, include=FALSE}
+if (knitr::is_latex_output()) {
+  knitr::opts_template$set(
+    tikz_settings = list(fig.ext = "pdf", fig.align = "center")
+  )
+} else {
+  knitr::opts_template$set(
+    tikz_settings = list(fig.ext = "svg", fig.align = "center",
+                         engine.opts = list(dvisvgm.opts = "--font-format=woff"))
+  )
+}
+```
+
+```{r, include=FALSE, cache=FALSE}
+knitr::read_chunk('chunk_algorithmengine.R')
+```
+
+```{r, algorithmengine, echo=FALSE}
+```
+
+```{r, connect-db, echo=FALSE}
+```
+
+```{r, include=FALSE, cache=FALSE}
+knitr::read_chunk('chunk_setup_db_module.py')
+```
+
+```{python python-module-db, echo=FALSE}
+```
+
+---
+title: "j-quarto-template"
+---
+
+### variable
+
+- `_variables.yml`
+
+Version {{{< var version >}}} is a minor upgrade. Please contact us at {{{< var email.info >}}}. Quarto includes {{{< var engine.jupyter >}}} and 
+{{{< var engine.knitr >}}} computation engines.
+
+
+- `_quarto.yml`
+
+{{{< meta title >}}}
+
+- environment variables
+
+{{{< env var_name >}}}
+
+
+### Conditional content
+
+To create content that only displays for a given output format (or only displays when not rendering to a format). You can accomplish this by creating `divs` with the `.content-visible` and `.content-hidden` classes.
+
+```{html eval=F}
+::: {.content-visible when-format="html"}
+Will only appear in HTML.
+:::
+```
+::: {.content-visible when-format="html"}
+Will only appear in HTML.
+:::
+
+```{html eval=F}
+::: {.content-visible unless-format="pdf"}
+Will not appear in PDF.
+:::
+```
+
+### diagram
+
+```{mermaid}
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```
+
+```{html eval=F}
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```
+
+### Video
+
+_extension dir:
+
+`(jmiscellany) $ quarto install extension quarto-ext/video`
+
+{{{< video https://www.youtube.com/embed/Ztmg9GM1QXY >}}}
+
+{{< video https://www.youtube.com/embed/Ztmg9GM1QXY >}}
+
+{{{< video 
+    src=https://youtu.be/NzX2EY1LUBI
+    title="What is the CERN?"
+    start="15" width="160" height="90" >}}}
+
+
+### Callouts
+
+```{html eval=F}
+:::{.callout-note}
+Note that there are five types of callouts, including: 
+`note`, `tip`, `warning`, `caution`, and `important`.
+:::
+```
+
+:::{.callout-note}
+Note that there are five types of callouts, including: 
+`note`, `tip`, `warning`, `caution`, and `important`.
+:::
+
+
+### Margin Content
+
+You can place content within the right margin of Quarto document. For example, here we use the .column-margin class to place an image in the margin:
+
+```{html eval=F}
+::: {.column-margin}
+![A margin image](imgs/digits_dataset_plot_image.png)
+:::
+```
+
+
+
+> Margin Figures
+
+Figures that you create using code cells can be placed in the margin by using the column: margin code cell option. If the code produces more than one figure, each of the figures will be placed in the margin.
+
+```{r}
+#| label: fig-mtcars
+#| fig-cap: "MPG vs horsepower, colored by transmission."
+#| column: margin
+
+library(ggplot2)
+mtcars2 <- mtcars
+mtcars2$am <- factor(
+  mtcars$am, labels = c('automatic', 'manual')
+)
+ggplot(mtcars2, aes(hp, mpg, color = am)) +
+  geom_point() +  geom_smooth(formula = y ~ x, method = "loess") +
+  theme(legend.position = 'bottom')
+```
+
+
+> Margin Tables
+
+You an also place tables in the margin of your document by specifying column: margin.
+
+```{r}
+#| column: margin
+#| label: tbl-mtcars
+#| tbl-cap: mtcars dataset
+knitr::kable(
+  mtcars[1:6, 1:3]
+)
+```
+
+> Other Content
+
+You can also place content in the margin by targeting the margin column using a div with the .column-margin class. For example:
+
+```{html eval=F}
+::: {.column-margin}
+We know from *the first fundamental theorem of calculus* that for $x$ in $[a, b]$:
+
+$$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
+:::
+```
+
+::: {.column-margin}
+We know from *the first fundamental theorem of calculus* that for $x$ in $[a, b]$:
+
+$$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
+:::
+
+
+### Latex-environment
+
+quarto install extension quarto-ext/latex-environment
+
+
+
+### Figure layout
+
+```{html eval=F}
+
+::: {#fig-elephants layout-ncol=2}
+
+![Surus](surus.png){#fig-surus}
+
+![Hanno](hanno.png){#fig-hanno}
+
+Famous Elephants
+:::
+
+See @fig-elephants for examples. In particular, @fig-hanno
+
+```    
+  
+
+
+### SQL chunk
+
+```{sql}
+#| connection: flight
+#| label: tbl-flight.flights
+#| tbl-cap: listing flights table
+#| 
+-- sql comment
+select * 
+from flights
+;
+```
+
+
+### fontawesome
+
+_extensions
+
+| Shortcode                                          | Icon                                      |
+| -------------------------------------------------- | ----------------------------------------- |
+| `{{{< fa thumbs-up >}}}`                           | {{< fa thumbs-up >}}                      |
+| `{{{< fa folder >}}}`                              | {{< fa folder >}}                         |
+| `{{{< fa chess-pawn >}}}`                          | {{< fa chess-pawn >}}                     |
+| `{{{< fa brands bluetooth >}}}`                    | {{< fa brands bluetooth >}}               |
+| `{{{< fa brands twitter size=2xl >}}}` (HTML only) | {{< fa brands twitter size=2xl >}}        |
+| `{{{< fa brands github size=5x >}}}` (HTML only)   | {{< fa brands github size=5x >}}          |
+| `{{{< fa battery-half size=Huge >}}}`              | {{< fa battery-half size=Huge >}}         |
+| `{{{< fa envelope title="An envelope" >}}}`        | {{< fa envelope title="An envelope" >}}   |
+

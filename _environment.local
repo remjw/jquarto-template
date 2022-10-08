@@ -1,0 +1,6 @@
+# database server
+mysqluser=r
+mysqlpassword=a
+mysqlhost=127.0.0.1
+mysqlport=3306
+
