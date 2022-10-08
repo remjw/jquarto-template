@@ -1,0 +1,15 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.venv/
+imgs/
+file/
+_site/
+chunk_setup_db_module.py
+chunk_setup.R
+chunk_algorithmengine.R
+_environment.local
+_environment.required
+/.quarto/
+.DS_Store
