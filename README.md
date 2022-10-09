@@ -1,5 +1,17 @@
 # jquarto-template
 
+### gh
+
+- brew install gh
+- gh auth login
+
+- gh repo delete: operation needs the "delete_repo" scope. To request it, run  
+`gh auth refresh -h github.com -s delete_repo`
+
+- gh repo delete
+- gh repo create <name> --public --add-readme
+
+
 ### From GitHub Repo to RStudio Project
 
 -   RStudio Project
