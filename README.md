@@ -36,8 +36,6 @@ python3 -m pip freeze > requirements.txt
 
 - Preview
 
-```{bash}
-#| eval: False
+```{bash eval=F}
 (.venv) (quarto) $ quarto preview jquarto-template
 ```
-
