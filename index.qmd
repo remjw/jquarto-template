@@ -90,6 +90,7 @@ Will not appear in PDF.
 
 ### diagram
 
+````
 ```{mermaid}
 flowchart LR
   A[Hard edge] --> B(Round edge)
@@ -97,8 +98,10 @@ flowchart LR
   C --> D[Result one]
   C --> E[Result two]
 ```
+````
 
-```{html eval=F}
+
+```{mermaid}
 flowchart LR
   A[Hard edge] --> B(Round edge)
   B --> C{Decision}
@@ -120,12 +123,12 @@ flowchart LR
 
 ### Callouts
 
-```{html eval=F}
-:::{.callout-note}
+````
+::: callout-note
 Note that there are five types of callouts, including: 
 `note`, `tip`, `warning`, `caution`, and `important`.
 :::
-```
+````
 
 ::: callout-note
 Note that there are five types of callouts, including: `note`, `tip`, `warning`, `caution`, and `important`.
@@ -227,7 +230,14 @@ from flights
 
 ### Python Chunk
 
+```{python}
+import sys
+print(sys.version_info)
+```
 
+```{python}
+import this
+```
 
 ### fontawesome
 
