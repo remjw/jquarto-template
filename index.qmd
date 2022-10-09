@@ -1,4 +1,5 @@
 <!--source .venv/bin/activate-->
+
 <!--source .venv/bin/activate-->
 
 ```{r, include=FALSE, cache=F}
@@ -8,14 +9,17 @@ knitr::read_chunk('chunk_setup.R')
 ```{r, setup, echo=FALSE,include=F}
 ```
 
+```{=html}
 <!--connect dvisvgm to Ghostscript for tikz
 find gs, run: tools:find_gs_cmd()
 -->
+```
 ```{r point-to-ghostscript, include=FALSE}
 Sys.setenv(LIBGS = "/usr/local/bin/gs")
 ```
 
 <!--Conditional tikz output types; use PDF if this is LaTeX, otherwise use SVG with embedded fonts -->
+
 ```{r tikzsetup, include=FALSE}
 if (knitr::is_latex_output()) {
   knitr::opts_template$set(
@@ -52,20 +56,17 @@ title: "j-quarto-template"
 
 ### variable
 
-- `_variables.yml`
+-   `_variables.yml`
 
-Version {{{< var version >}}} is a minor upgrade. Please contact us at {{{< var email.info >}}}. Quarto includes {{{< var engine.jupyter >}}} and 
-{{{< var engine.knitr >}}} computation engines.
+Version {{{< var version >}}} is a minor upgrade. Please contact us at {{{< var email.info >}}}. Quarto includes {{{< var engine.jupyter >}}} and {{{< var engine.knitr >}}} computation engines.
 
-
-- `_quarto.yml`
+-   `_quarto.yml`
 
 {{{< meta title >}}}
 
-- environment variables
+-   environment variables
 
 {{{< env var_name >}}}
-
 
 ### Conditional content
 
@@ -76,6 +77,7 @@ To create content that only displays for a given output format (or only displays
 Will only appear in HTML.
 :::
 ```
+
 ::: {.content-visible when-format="html"}
 Will only appear in HTML.
 :::
@@ -106,7 +108,7 @@ flowchart LR
 
 ### Video
 
-_extension dir:
+\_extension dir:
 
 `(jmiscellany) $ quarto install extension quarto-ext/video`
 
@@ -114,11 +116,7 @@ _extension dir:
 
 {{< video https://www.youtube.com/embed/Ztmg9GM1QXY >}}
 
-{{{< video 
-    src=https://youtu.be/NzX2EY1LUBI
-    title="What is the CERN?"
-    start="15" width="160" height="90" >}}}
-
+{{{< video src=https://youtu.be/NzX2EY1LUBI title="What is the CERN?" start="15" width="160" height="90" >}}}
 
 ### Callouts
 
@@ -129,11 +127,9 @@ Note that there are five types of callouts, including:
 :::
 ```
 
-:::{.callout-note}
-Note that there are five types of callouts, including: 
-`note`, `tip`, `warning`, `caution`, and `important`.
+::: callout-note
+Note that there are five types of callouts, including: `note`, `tip`, `warning`, `caution`, and `important`.
 :::
-
 
 ### Margin Content
 
@@ -144,8 +140,6 @@ You can place content within the right margin of Quarto document. For example, h
 ![A margin image](imgs/digits_dataset_plot_image.png)
 :::
 ```
-
-
 
 > Margin Figures
 
@@ -165,7 +159,6 @@ ggplot(mtcars2, aes(hp, mpg, color = am)) +
   geom_point() +  geom_smooth(formula = y ~ x, method = "loess") +
   theme(legend.position = 'bottom')
 ```
-
 
 > Margin Tables
 
@@ -192,18 +185,15 @@ $$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
 :::
 ```
 
-::: {.column-margin}
+::: column-margin
 We know from *the first fundamental theorem of calculus* that for $x$ in $[a, b]$:
 
 $$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
 :::
 
-
 ### Latex-environment
 
 quarto install extension quarto-ext/latex-environment
-
-
 
 ### Figure layout
 
@@ -220,9 +210,7 @@ Famous Elephants
 
 See @fig-elephants for examples. In particular, @fig-hanno
 
-```    
-  
-
+```
 
 ### SQL chunk
 
@@ -237,19 +225,19 @@ from flights
 ;
 ```
 
-
 ### fontawesome
 
-_extensions
+\_extensions
 
-| Shortcode                                          | Icon                                      |
-| -------------------------------------------------- | ----------------------------------------- |
-| `{{{< fa thumbs-up >}}}`                           | {{< fa thumbs-up >}}                      |
-| `{{{< fa folder >}}}`                              | {{< fa folder >}}                         |
-| `{{{< fa chess-pawn >}}}`                          | {{< fa chess-pawn >}}                     |
-| `{{{< fa brands bluetooth >}}}`                    | {{< fa brands bluetooth >}}               |
-| `{{{< fa brands twitter size=2xl >}}}` (HTML only) | {{< fa brands twitter size=2xl >}}        |
-| `{{{< fa brands github size=5x >}}}` (HTML only)   | {{< fa brands github size=5x >}}          |
-| `{{{< fa battery-half size=Huge >}}}`              | {{< fa battery-half size=Huge >}}         |
-| `{{{< fa envelope title="An envelope" >}}}`        | {{< fa envelope title="An envelope" >}}   |
+`quarto install extension quarto-ext/fontawesome`
 
+| Shortcode                                          | Icon                                    |
+|---------------------------------------|--------------------------------|
+| `{{{< fa thumbs-up >}}}`                           | {{< fa thumbs-up >}}                    |
+| `{{{< fa folder >}}}`                              | {{< fa folder >}}                       |
+| `{{{< fa chess-pawn >}}}`                          | {{< fa chess-pawn >}}                   |
+| `{{{< fa brands bluetooth >}}}`                    | {{< fa brands bluetooth >}}             |
+| `{{{< fa brands twitter size=2xl >}}}` (HTML only) | {{< fa brands twitter size=2xl >}}      |
+| `{{{< fa brands github size=5x >}}}` (HTML only)   | {{< fa brands github size=5x >}}        |
+| `{{{< fa battery-half size=Huge >}}}`              | {{< fa battery-half size=Huge >}}       |
+| `{{{< fa envelope title="An envelope" >}}}`        | {{< fa envelope title="An envelope" >}} |
