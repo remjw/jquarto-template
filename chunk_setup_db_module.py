@@ -18,7 +18,7 @@ import pymysql
 def load_conf_file(config_file):
   with open(config_file, "r") as f:
     config = yaml.safe_load(f)
-    print(config)
+    #print(config)
     info_conf = config["info"]
     mysql_conf = config["mysql"]
   return info_conf, mysql_conf
