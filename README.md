@@ -34,8 +34,11 @@ python3 -m pip freeze > requirements.txt
 
 -   variables.yml
 
-- Preview
+- Preview & Render
 
 ```{bash eval=F}
 (.venv) (quarto) $ quarto preview jquarto-template
+(.venv) (quarto) $ quarto render jquarto-template
 ```
+
+
