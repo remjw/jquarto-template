@@ -5,15 +5,15 @@
 #config = yaml.load_file("config.yml")
 #_variables$mysql$user
 
-version: 1.0
-
-email:
-  info: info@example.com
-  support: support@example.com
+info:
+  version: 1.0
+  email:
+    info: info@example.com
+    support: support@example.com
 
 mysql:
-  user: r
-  password: a
+  user: root
+  password: apple
   host: 127.0.0.1
   port: 3306
 

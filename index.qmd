@@ -58,7 +58,7 @@ title: "j-quarto-template"
 
 -   `_variables.yml`
 
-Version {{{< var version >}}} is a minor upgrade. Please contact us at {{{< var email.info >}}}. Quarto includes {{{< var engine.jupyter >}}} and {{{< var engine.knitr >}}} computation engines.
+Version {{{< var info.version >}}} {{< var info.version >}} is a minor upgrade. Please contact us at {{{< var info.email.info >}}} {{< var info.email.info >}}. Quarto includes {{{< var engine.jupyter >}}} and {{{< var engine.knitr >}}} computation engines.
 
 -   `_quarto.yml`
 
@@ -224,6 +224,10 @@ select *
 from flights
 ;
 ```
+
+### Python Chunk
+
+
 
 ### fontawesome
 
