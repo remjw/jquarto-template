@@ -51,10 +51,10 @@ knitr::read_chunk('chunk_setup_db_module.py')
 ```
 
 ---
-title: "j-quarto-template"
+title: j-quarto-template
 ---
 
-### variable
+### Variable
 
 -   `_variables.yml`
 
@@ -88,7 +88,7 @@ Will not appear in PDF.
 :::
 ```
 
-### diagram
+### Diagram
 
 ````
 ```{mermaid}
@@ -194,6 +194,58 @@ We know from *the first fundamental theorem of calculus* that for $x$ in $[a, b]
 $$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
 :::
 
+### Themes
+
+ https://bootswatch.com/
+ 
+
+### Other layouts 
+
+```{r}
+#| label: tbl-tables
+#| tbl-cap: "Tables"
+#| tbl-subcap:
+#|   - "Cars"
+#|   - "Pressure"
+#| layout-ncol: 2
+#| echo: fenced
+
+library(knitr)
+kable(head(cars))
+kable(head(pressure))
+```
+
+```{r}
+#| warning: false
+#| code-line-numbers: "|7"
+#| output-location: fragment
+#| fig-cap:
+#|   - "Speed and Stopping Distances of Cars"
+#|   - "Engine displacement and fuel efficiency in Cars"
+#| layout: "[[40,-20,40]]"
+#| fig-height: 4
+#| fig-format: retina
+cars |> 
+  ggplot(aes(x = speed, y = dist)) +
+  geom_point()
+mtcars |> 
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_point()
+```
+
+```{r}
+#| code-line-numbers: "|3"
+#| fig-cap: !expr glue::glue("The mean temperature was {mean(airquality$Temp) |> round()}")
+#| fig-alt: |
+#|   "A scatterplot with temperature by ozone levels along with a trend line
+#|   indicating the increase in temperature with increasing ozone levels."
+ggplot(airquality, aes(Ozone, Temp)) + 
+        geom_point() + 
+        geom_smooth(method = "loess", se = FALSE)
+```
+
+
+
 ### Latex-environment
 
 quarto install extension quarto-ext/latex-environment
@@ -227,6 +279,10 @@ select *
 from flights
 ;
 ```
+
+`{#lst-flights .sql, lst-cap="Flights Query"} #| connection: flight #| label: tbl-flight.flights #| tbl-cap: listing flights table #|  -- sql comment select *  from flights ;`
+
+Then we query the flights table (@lst-flights).
 
 ### Python Chunk
 
