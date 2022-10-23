@@ -3,9 +3,9 @@ project:
   type: website
   output-dir: _site
   execute-dir: project
-  pre-render: 
-    - chunk_setup.R
-    - chunk_algorithmengine.R
+#  pre-render:
+#    - chunk_setup.R
+#    - chunk_algorithmengine.R
 
 toc: true
 number-sections: true
