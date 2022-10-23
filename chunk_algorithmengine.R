@@ -96,3 +96,5 @@ knitr::knit_engines$set(algorithm = eng_algo)
 # connect dvisvgm to Ghostscript for tikz
 # find gs, run: tools:find_gs_cmd()
 Sys.setenv(LIBGS = "/usr/local/bin/gs")
+
+save(eng_algo, file = "funs.Rdata")

@@ -13,3 +13,5 @@ _site/*
 !chunk_algorithmengine.R
 !_environment.local
 !_environment.required
+funs.Rdata
+dbobjs.Rdata

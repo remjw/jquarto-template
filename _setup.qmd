@@ -1,0 +1,52 @@
+<!--source .venv/bin/activate-->
+
+<!--source .venv/bin/activate-->
+
+```{r, include=FALSE, cache=F}
+knitr::read_chunk('chunk_setup.R')
+```
+
+```{r, setup, echo=FALSE,include=F}
+```
+
+```{=html}
+<!--connect dvisvgm to Ghostscript for tikz
+find gs, run: tools:find_gs_cmd()
+-->
+```
+```{r point-to-ghostscript, include=FALSE}
+Sys.setenv(LIBGS = "/usr/local/bin/gs")
+```
+
+<!--Conditional tikz output types; use PDF if this is LaTeX, otherwise use SVG with embedded fonts -->
+
+```{r tikzsetup, include=FALSE}
+if (knitr::is_latex_output()) {
+  knitr::opts_template$set(
+    tikz_settings = list(fig.ext = "pdf", fig.align = "center")
+  )
+} else {
+  knitr::opts_template$set(
+    tikz_settings = list(fig.ext = "svg", fig.align = "center",
+                         engine.opts = list(dvisvgm.opts = "--font-format=woff"))
+  )
+}
+```
+
+```{r, include=FALSE, cache=FALSE}
+knitr::read_chunk('chunk_algorithmengine.R')
+```
+
+```{r, algorithmengine, echo=FALSE}
+```
+
+```{r, connect-db, echo=FALSE}
+```
+
+```{r, include=FALSE, cache=FALSE}
+knitr::read_chunk('chunk_setup_db_module.py')
+```
+
+```{python python-module-db, echo=FALSE}
+```
+

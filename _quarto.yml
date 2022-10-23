@@ -1,20 +1,18 @@
-# quarto render --profile advanced,production
 project:
-  title: "j-quarto-template"
+  title: "DBS Guide"
   type: website
   output-dir: _site
-  execute-dir: project #always main project_dir as working_dir
-# or use environment variable QUARTO_PROJECT_DIR
-  #pre-render: prepare.py or shell command
-  #post-render:
-  # - compres.ts
-  # - clean.py
+  execute-dir: project
+  pre-render: 
+    - chunk_setup.R
+    - chunk_algorithmengine.R
 
 toc: true
 number-sections: true
 tbl-cap-location: top
 editor: visual
-#bibliography: references.bib
+bibliography: teachref.bib
+#biblio-style: apalike
 reference-location: margin
 citation-location: margin
 
@@ -31,7 +29,7 @@ metadata-files:
 
 format:
   html:
-    theme: cosmo
+    theme: cosmo # litera # cosmo
     css: style_quarto.css
     cover-image: cover.png
     number-sections: true

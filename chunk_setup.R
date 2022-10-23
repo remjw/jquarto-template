@@ -4,6 +4,7 @@
 #getOption("encoding")
 #rmarkdown::pandoc_version()
 #xfun::pkg_load2(c("htmltools", "mime"))
+
 ## ---- setup --------
 library(reticulate)
 #use_condaenv(condaenv = 'iris')#'waterlily')
@@ -40,6 +41,10 @@ knitr::opts_chunk$set(
     '/usr/local/Cellar/graphviz/2.50.0/bin/dot'))
 )
 
+knitr::knit_engines$set(html = function(options) {
+  # the source code is in options$code; just do
+  # whatever you want with it
+})
 
 
 
@@ -132,4 +137,6 @@ vrg <- dbConnect(RMySQL::MySQL(),dbname='vrg',username=mysqluser,password=mysqlp
 
 knitr::opts_chunk$set(connection = "codd")
 
+
+save(codd, jsea, test_db, flight, flight2, wesay, vrg, file = "dbobjs.Rdata")
 
